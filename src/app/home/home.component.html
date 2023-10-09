@@ -1,0 +1,65 @@
+
+<body *ngIf="productList.length>0 else loading" >
+    
+
+<div class="container mt-4 mb-3 ">
+    <div class="row">
+
+        <div class="carousel col-md-4 m-auto">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container >
+                  <ng-template carouselSlide id="1" class="owl-item">
+                    <img  src="../../assets/images/41nN4nvKaAL._AC_SY200_.jpg" class="">
+                  </ng-template>
+                  <ng-template carouselSlide id="2">
+                    <img  src="../../assets/images/61cSNgtEISL._AC_SY200_.jpg" class="">
+                  </ng-template>
+                  <ng-template carouselSlide id="3">
+                    <img  src="../../assets/images/XCM_Manual_1396328_4379574_Egypt_EG_BAU_GW_DC_SL_Jewelry_379x304_1X._SY304_CB650636675_.jpg" class="">
+                  </ng-template>
+                </ng-container>
+              </owl-carousel-o>
+        </div>
+        <div class="col-md-6">
+            <img src="../../assets/images/XCM_Manual_1396328_4379575_Egypt_EG_BAU_GW_DC_SL_Bags_Wallets_379x304_1X._SY304_CB650636675_.jpg">
+            <img src="../../assets/images/XCM_Manual_1533480_5305769_379x304_1X._SY304_CB616236518_.jpg">
+        </div>
+    </div>
+   
+
+   
+</div>
+<app-slider [catergory]="categoryList"></app-slider>
+<input class="mx-auto form-control m-5 w-50" placeholder="Search" [(ngModel)]="searchword">
+<div class="container" >
+    <div class="row mt-3" >
+        <div *ngFor="let product of productList|search:searchword" class="col-md-3 product">
+            <img [src]="product.imageCover"class="w-100" [routerLink]="['/productdetails',product._id]">
+            <h5 class="text-main">{{product.category.name}}</h5>
+            <p class="fw-bold">{{product.title|trim}}</p>
+            <p class="d-inline me-5">{{product.price |currency:'EGP' }}</p>
+            <p class="d-inline m-auto">{{product.ratingsAverage}}
+                <i class="fa-solid fa-star rating-color"></i>
+            </p>
+            <i class="fa-solid fa-heart d-block pt-3 fs-3" aria-hidden="true" [id]="product._id" (click)="addProductToWishlist(product._id,$event)"></i>
+            <div class="button button mt-2 mb-2">
+                <button class="btn bg-main m-2 text-white d-block w-50 m-auto" (click)="addProduct(product.id)">+ add </button>
+            </div>
+          
+        </div>
+    </div>
+</div>
+</body>
+<ng-template #loading>
+    <div class="d-flex justify-content-center align-items-center vh-100  position-relative top-0 start-0 fixed-top loading">
+        <div class="sk-chase  ">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+    </div>
+
+    

@@ -1,0 +1,17 @@
+h3{
+    color:  #0aad0a;
+    font-weight: bolder;
+}
+img{
+    height: 300px;
+    width: 100%;
+
+}
+.card:hover{
+    box-shadow: 8px 8px 8px -4px lightblue,
+   0px 8px 8px -4px lightblue, 8px 0px 8px -4px lightblue, -8px 0px 8px -4px lightblue;
+
+}
+.card{
+    transition: all  1s;
+}

@@ -1,0 +1,41 @@
+<body *ngIf="products else loading"></body>
+<div class="container bg-light mt-4 p-2">
+    <h3 class="m-3 fw-bold">My Wishlist</h3>
+    <div class="row m-2" *ngFor="let product of products">
+        <div class="col-md-10 d-flex ">
+            <div class="image">
+                <img [src]="product.imageCover" class="">
+            </div>
+
+            <div class="data top-50 position-relative ps-5">
+                <h5 class="m-1 fw-bold">{{product.title|trim}}</h5>
+                <p class="m-1 text-main">{{product.price|currency:"EGP"}}</p>
+                <i class="fa-solid fa-trash text-danger"></i>
+                <button class="btn btn-outline-light text-danger  m-1" (click)="remove(product.id)">Remove</button>
+                
+            </div>
+            
+          
+        </div>
+
+        <div class="col-md-2 mt-5">
+            <button class="btn btn-outline-success position-relative top-50" (click)="addToCart(product.id)">Add to cart</button>
+
+        </div>
+
+       
+
+    </div>
+</div>
+<ng-template #loading>
+    <div class="d-flex justify-content-center align-items-center vh-100  position-relative top-0 start-0 fixed-top loading">
+        <div class="sk-chase  ">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+    </div>
+  </ng-template>

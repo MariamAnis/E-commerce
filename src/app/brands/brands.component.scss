@@ -1,0 +1,16 @@
+h1{
+    font-weight: 500;
+    font-size: 40px;
+    color:  rgb(79, 167, 79);
+    line-height: 48px;
+
+}
+.card{
+    transition: all  1s;
+}
+
+.card:hover{
+    box-shadow: 8px 8px 8px -4px lightblue,
+   0px 8px 8px -4px lightblue, 8px 0px 8px -4px lightblue, -8px 0px 8px -4px lightblue;
+
+}

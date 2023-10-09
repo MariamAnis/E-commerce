@@ -1,0 +1,45 @@
+<body *ngIf="categories.length>0 else loading">
+<div class="container">
+    <div class="row mt-4" >
+        <div class="col-md-4 mt-3"*ngFor="let category of categories">
+            <div class="card" (click)="getSubCategory(category._id,category.name)">
+                <img class="card-img-top ratio-4x3 img-fluid" [src]="category.image" alt="Card image cap">
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{category.name}}</h3>
+             
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+    
+
+    
+
+    <h3 [class.disabled]="isSub" class="mt-4 text-center">{{subCategoryName}} </h3>
+    <div class="row mt-4" [class.disabled]="isSub">
+        <div class="col-md-6 mt-3 mb-3" *ngFor="let subCategory of subCategories">
+            <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{subCategory.name}}</h3>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center vh-100  position-relative top-0 start-0 fixed-top loading">
+      <div class="sk-chase  ">
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+        </div>
+  </div>
+</ng-template>

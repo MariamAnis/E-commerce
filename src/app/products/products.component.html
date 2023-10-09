@@ -1,0 +1,32 @@
+<body *ngIf="products.length>0 else loading">
+<input class="mx-auto form-control m-5 w-50" placeholder="Search" [(ngModel)]="searchword">
+<div class="container">
+    <div class="row mt-3">
+        <div *ngFor="let product of  products |search:searchword" class="col-md-3 product">
+            <img [src]="product.imageCover"class="w-100" [routerLink]="['/productdetails',product._id]">
+            <h5 class="text-main">{{product.category.name}}</h5>
+            <p class="fw-bold">{{product.title|trim}}</p>
+            <p class="d-inline me-5 ">{{product.price |currency:'EGP' }}</p>
+            <p class="d-inline m-auto">{{product.ratingsAverage}}
+                <i class="fa-solid fa-star rating-color"></i>
+            </p>
+            <i class="fa-solid fa-heart d-block pt-3 fs-3" aria-hidden="true" [id]="product._id" (click)="addProductToWishlist(product._id,$event)"></i>
+            <div class="button mt-2 mb-2">
+                <button class="btn bg-main m-2 text-white d-block w-50 m-auto" (click)="addProduct(product.id)">+ add </button>
+            </div>
+           
+        </div>
+    </div>
+</div>
+</body>
+<ng-template #loading>
+    <div class="d-flex justify-content-center align-items-center vh-100  position-relative top-0 start-0 fixed-top loading">
+        <div class="sk-chase  ">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+    </div>
